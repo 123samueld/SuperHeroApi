@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\source\\repos\\SuperHeroApi\\SuperHeroApi\\SuperHeroApi.csproj": {}
+    "C:\\Users\\User\\source\\repos\\SuperHeroAPI\\SuperHeroApi\\SuperHeroApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\source\\repos\\SuperHeroApi\\SuperHeroApi\\SuperHeroApi.csproj": {
+    "C:\\Users\\User\\source\\repos\\SuperHeroAPI\\SuperHeroApi\\SuperHeroApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\source\\repos\\SuperHeroApi\\SuperHeroApi\\SuperHeroApi.csproj",
+        "projectUniqueName": "C:\\Users\\User\\source\\repos\\SuperHeroAPI\\SuperHeroApi\\SuperHeroApi.csproj",
         "projectName": "SuperHeroApi",
-        "projectPath": "C:\\Users\\User\\source\\repos\\SuperHeroApi\\SuperHeroApi\\SuperHeroApi.csproj",
+        "projectPath": "C:\\Users\\User\\source\\repos\\SuperHeroAPI\\SuperHeroApi\\SuperHeroApi.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\source\\repos\\SuperHeroApi\\SuperHeroApi\\obj\\",
+        "outputPath": "C:\\Users\\User\\source\\repos\\SuperHeroAPI\\SuperHeroApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,9 +40,37 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.1, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
