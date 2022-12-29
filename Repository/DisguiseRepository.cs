@@ -24,5 +24,31 @@
         {
             return _context.Disguises.Any(d => d.Id == disguiseId);
         }
+
+        public bool CreateDisguise(Disguise disguise)
+        {
+            _context.Add(disguise);
+            return Save();
+        }
+
+        public bool Save()
+        {
+            var saved = _context.SaveChanges();
+            return saved > 0 ? true : false;
+        }
+
+        public bool UpdateDisguise(Disguise disguise)
+        {
+
+            _context.Update(disguise);
+            return Save();
+        }
+
+        public bool DeleteDisguise(Disguise disguise)
+        {
+
+            _context.Remove(disguise);
+            return Save();
+        }
     }
 }

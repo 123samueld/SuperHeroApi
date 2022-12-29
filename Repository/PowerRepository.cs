@@ -24,5 +24,29 @@
         {
             return _context.Powers.Any(p => p.Id == powerId);
         }
+
+        public bool CreatePower(Power power)
+        {
+            _context.Add(power);
+            return Save();
+        }
+
+        public bool Save()
+        {
+            var saved = _context.SaveChanges();
+            return saved > 0 ? true : false;
+        }
+
+        public bool UpdatePower(Power power)
+        {
+            _context.Update(power);
+            return Save();
+        }
+
+        public bool DeletePower(Power power)
+        {
+            _context.Remove(power);
+            return Save();
+        }
     }
 }

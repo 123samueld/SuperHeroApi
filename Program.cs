@@ -5,6 +5,8 @@ global using SuperHeroApi.Repository;
 global using SuperHeroApi.Interfaces;
 global using SuperHeroApi.Models;
 global using SuperHeroApi.Data;
+global using SuperHeroApi.Dto;
+global using AutoMapper;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 builder.Services.AddScoped<IDisguiseRepository, DisguiseRepository>();
 builder.Services.AddScoped<IPowerRepository, PowerRepository>();

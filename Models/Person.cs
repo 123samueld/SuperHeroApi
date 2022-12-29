@@ -6,7 +6,7 @@
         public string FirstName { get; set; } = null!;
         public string LastName { get; set; } = null!;
         public ICollection<Disguise>? Disguises { get; set; }
-        public ICollection<SuperHero> SuperHeroes { get; set; }
+        public ICollection<SuperHero>? SuperHeroes { get; set; }
 
     }
 }
