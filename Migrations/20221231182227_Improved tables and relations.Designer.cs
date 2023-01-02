@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SuperHeroApi.Data;
 
@@ -10,9 +11,11 @@ using SuperHeroApi.Data;
 namespace SuperHeroApi.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20221231182227_Improved tables and relations")]
+    partial class Improvedtablesandrelations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,9 +66,6 @@ namespace SuperHeroApi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("NemisisId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.ToTable("People");
@@ -81,10 +81,6 @@ namespace SuperHeroApi.Migrations
 
                     b.Property<int>("Id")
                         .HasColumnType("int");
-
-                    b.Property<string>("SuperHeroName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("PersonId", "PowerId");
 

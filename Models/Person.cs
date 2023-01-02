@@ -2,11 +2,12 @@
 {
     public class Person
     {
-        public int Id { get; set; }
+        public int Id { get; set; } 
         public string FirstName { get; set; } = null!;
         public string LastName { get; set; } = null!;
-        public ICollection<Disguise>? Disguises { get; set; }
-        public ICollection<SuperHero>? SuperHeroes { get; set; }
+        public int NemisisId { get; set; }
+        public ICollection<Nemisis> Nemeses { get; set; } = null!;
+        public ICollection<Person_Power> People_Powers { get; set; } = null!;
 
     }
 }

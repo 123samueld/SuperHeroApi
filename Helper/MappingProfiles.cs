@@ -4,8 +4,8 @@
     {
         public MappingProfiles()
         {
-            CreateMap<Disguise, DisguiseDto>();
-            CreateMap<DisguiseDto, Disguise>();
+            CreateMap<NemisisDto, Nemisis>();
+            CreateMap<Nemisis, NemisisDto>();
 
             CreateMap<Person, PersonDto>();
             CreateMap<PersonDto, Person>();

@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+﻿using SuperHeroApi.Models;
 
 namespace SuperHeroApi.Controllers
 {
@@ -7,11 +7,16 @@ namespace SuperHeroApi.Controllers
     public class PersonController : ControllerBase
     {
         private readonly IPersonRepository _personRepository;
+        private readonly IPowerRepository _powerRepository;
         private readonly IMapper _mapper;
 
-        public PersonController(IPersonRepository personRepository, IMapper mapper)
+        public PersonController(
+            IPersonRepository personRepository,
+            IPowerRepository powerRepository,
+            IMapper mapper)
         {
             _personRepository = personRepository;
+            _powerRepository = powerRepository;
             _mapper = mapper;
         }
 
@@ -27,7 +32,7 @@ namespace SuperHeroApi.Controllers
             return Ok(people);
         }
 
-        [HttpGet("{personId}")]
+        [HttpGet("{personId}/nemeses")]
         [ProducesResponseType(200, Type = typeof(Person))]
         [ProducesResponseType(400)]
         public IActionResult GetPerson(int personId)
@@ -42,10 +47,27 @@ namespace SuperHeroApi.Controllers
 
             return Ok(person);
         }
-        [HttpPost]
-        [ProducesResponseType(204)]
+
+        [HttpGet("{personId}")]
+        [ProducesResponseType(200, Type = typeof(Person))]
         [ProducesResponseType(400)]
-        public IActionResult CreatePerson([FromBody] PersonDto personCreate)
+        public IActionResult GetNemesesOfAPerson(int personId)
+        {
+            if (!_personRepository.PersonExists(personId))
+                return NotFound();
+
+            var personsNemeses = _mapper.Map<NemisisDto>(_personRepository.GetTheNemesesOfAPerson(personId));
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            return Ok(personsNemeses);
+
+
+        }
+            [HttpPost]
+        [ProducesResponseType(400)]
+        public IActionResult CreatePerson([FromQuery]int powerId, [FromBody] PersonDto personCreate)
         {
             if (personCreate == null)
                 return BadRequest(ModelState);
@@ -64,7 +86,7 @@ namespace SuperHeroApi.Controllers
 
             var personMap = _mapper.Map<Person>(personCreate);
 
-            if (!_personRepository.CreatePerson(personMap))
+            if (!_personRepository.CreatePerson(powerId, personMap))
             {
                 ModelState.AddModelError("", "Sorry, something went wrong while trying to add this person.");
 
@@ -74,7 +96,6 @@ namespace SuperHeroApi.Controllers
         }
 
         [HttpPut("{personId}")]
-        [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
         public IActionResult UpdatePerson(int personId, [FromBody] PersonDto updatedPerson)
@@ -103,7 +124,6 @@ namespace SuperHeroApi.Controllers
         }
 
         [HttpDelete("{personId}")]
-        [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
         public IActionResult DeletePerson(int personId)

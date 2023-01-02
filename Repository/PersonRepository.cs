@@ -9,15 +9,21 @@
             _context = context;
         }
 
-        public bool CreatePerson(Person person)
+        public bool CreatePerson(int powerId, Person person)
         {
-            _context.Add(person);
-            return Save();
-        }
+            var personPowerJoinTableEntity = _context.Powers
+                .Where(pwr => pwr.Id == powerId)
+                .FirstOrDefault();
 
-        public bool DeletePerson(Person person)
-        {
-            _context.Remove(person);
+            var personPower = new Person_Power()
+            {
+                Power = personPowerJoinTableEntity,
+                Person = person
+            };
+
+            _context.Add(personPower);
+            _context.Add(person);
+
             return Save();
         }
 
@@ -31,6 +37,19 @@
             return _context.People
                 .Where(p => p.Id == personId)
                 .FirstOrDefault();
+        }
+
+        public ICollection<Nemisis> GetTheNemesesOfAPerson(int personId)
+        {
+            return _context.Nemeses
+                .Where(p => p.Person.Id == personId)
+                .ToList();
+        }
+
+        public bool DeletePerson(Person person)
+        {
+            _context.Remove(person);
+            return Save();
         }
 
         public bool PersonExists(int personId)

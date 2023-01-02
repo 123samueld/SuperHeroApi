@@ -44,7 +44,6 @@ namespace SuperHeroApi.Controllers
         }
 
         [HttpPost]
-        [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         public IActionResult CreatePower([FromBody] PowerDto powerCreate)
         {
@@ -76,7 +75,6 @@ namespace SuperHeroApi.Controllers
         }
 
         [HttpPut("{powerId}")]
-        [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
         public IActionResult UpdatePower(int powerId, [FromBody] PowerDto updatedPower)
@@ -105,7 +103,6 @@ namespace SuperHeroApi.Controllers
         }
 
         [HttpDelete("{powerId}")]
-        [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
         public IActionResult DeletePower(int powerId)

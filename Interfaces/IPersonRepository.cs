@@ -4,7 +4,8 @@
     {
         ICollection<Person> GetPeople();
         Person GetPerson(int personId);
-        bool CreatePerson(Person person);
+        ICollection<Nemisis> GetTheNemesesOfAPerson(int personId);
+        bool CreatePerson(int powerId, Person person);
         bool UpdatePerson(Person person);
         bool DeletePerson(Person person);
         bool Save();
