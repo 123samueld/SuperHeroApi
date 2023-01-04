@@ -68,5 +68,12 @@
             _context.Update(person);
             return Save();
         }
+
+        public Person GetPersonTrimToUpper(PersonDto personCreate)
+        {
+            return GetPeople()
+                .Where(c => c.FirstName.Trim().ToUpper() == personCreate.FirstName.TrimEnd().ToUpper())
+                .FirstOrDefault();
+        }
     }
 }

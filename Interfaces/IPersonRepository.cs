@@ -5,6 +5,7 @@
         ICollection<Person> GetPeople();
         Person GetPerson(int personId);
         ICollection<Nemisis> GetTheNemesesOfAPerson(int personId);
+        Person GetPersonTrimToUpper(PersonDto personCreate);
         bool CreatePerson(int powerId, Person person);
         bool UpdatePerson(Person person);
         bool DeletePerson(Person person);

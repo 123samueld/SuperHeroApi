@@ -65,12 +65,15 @@ namespace SuperHeroApi.Controllers
 
 
         }
-            [HttpPost]
+        [HttpPost]
         [ProducesResponseType(400)]
         public IActionResult CreatePerson([FromQuery]int powerId, [FromBody] PersonDto personCreate)
         {
             if (personCreate == null)
                 return BadRequest(ModelState);
+
+            var people = _personRepository.GetPersonTrimToUpper(personCreate);
+
             var person = _personRepository.GetPeople()
                 .Where(p => p.LastName.Trim().ToUpper() == personCreate.LastName.TrimEnd().ToUpper())
                 .FirstOrDefault();
