@@ -32,7 +32,7 @@ namespace SuperHeroApi.Controllers
             return Ok(people);
         }
 
-        [HttpGet("{personId}/nemeses")]
+        [HttpGet("{personId}")]
         [ProducesResponseType(200, Type = typeof(Person))]
         [ProducesResponseType(400)]
         public IActionResult GetPerson(int personId)
@@ -48,7 +48,7 @@ namespace SuperHeroApi.Controllers
             return Ok(person);
         }
 
-        [HttpGet("{personId}")]
+        [HttpGet("{personId}/nemisis")]
         [ProducesResponseType(200, Type = typeof(Person))]
         [ProducesResponseType(400)]
         public IActionResult GetNemesesOfAPerson(int personId)
